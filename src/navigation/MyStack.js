@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '../screens/Home';
 import Settings from '../screens/Settings';
 import { View, Text } from 'react-native';
 import { Colors } from '../constans/colors';
+import MyBottomTab from './MyBottomTab';
 
 const HomeStack = createStackNavigator();
 function CustomHeader({ title }) {
@@ -30,14 +30,22 @@ function CustomHeader({ title }) {
         </View>
     )
 }
-const myConfig = {header: ({ route }) => <CustomHeader title={route.name} /> };
+const myConfig = {
+    headerShown:false,
+    // header: ({ route }) => <CustomHeader title={route.name} /> , 
+    presentation: 'modal'};
 
 
 export default function MyStack() {
     return (
         <HomeStack.Navigator initialRouteName='Home' screenOptions={myConfig}>
-            <HomeStack.Screen name='Home' component={Home} />
-            <HomeStack.Screen name='Settings' component={Settings} />
+
+            <HomeStack.Screen name='MyBottomTab' component={MyBottomTab} />
+
+            <HomeStack.Group screenOptions={{headerShown:true}}>
+            <HomeStack.Screen name='Settings' component={Settings} options={{headerBackTitle:'Home'}}/>
+            </HomeStack.Group>
+
         </HomeStack.Navigator>
     )
 }

@@ -10,7 +10,7 @@ export default function Settings() {
   return (
     <View style={globalStyles.screenContainer}>
       <Text style={globalStyles.title}>Settings</Text>
-      <Button title="ir a Home" onPress={()=>navigation.navigate('Home')} />
+      <Button title="ir a Home" onPress={()=>navigation.navigate('MyBottomTab')} />
     </View>
   )
 }

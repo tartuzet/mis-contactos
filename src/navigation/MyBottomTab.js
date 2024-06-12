@@ -6,6 +6,7 @@ import Profile from '../screens/Profile';
 import {FontAwesome,MaterialIcons} from '@expo/vector-icons'
 import { Colors } from '../constans/colors';
 import { useNavigation } from '@react-navigation/native';
+import MyToTap from './MyToTap';
 
 
 const MyTab = createBottomTabNavigator();
@@ -15,13 +16,15 @@ export default function MyBottomTab() {
   const navigation = useNavigation();
   return (
 
-    <MyTab.Navigator screenOptions={{
+    <MyTab.Navigator 
+    initialRouteName='MyToTap'
+    screenOptions={{
         headerTitleAlign:'center',
         tabBarActiveTintColor: Colors.secondary,
     }}>
         <MyTab.Screen 
-        name="Home" 
-        component={Home} 
+        name="MyToTap" 
+        component={MyToTap} 
         options={{
             tabBarIcon: ({color})=> (<FontAwesome name="home" size={28} color={color}/>),
             headerLeft: () => (
